@@ -10,27 +10,28 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>EnterCustomer</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </head>
+
 <body>
-    <div> 
-        <form action="Submit" method="post">
-            Customer Name <input name="CustomerName"
-                                 type="text"
-                                 value="@Model.CustomerName" />
+    <div>
+        @using (@Html.BeginForm("Submit", "Customer"))    
+        {
+            <p>Customer Name</p> @Html.TextBoxFor(m => m.CustomerName)
             <br />
             @Html.ValidationMessageFor(x => x.CustomerName)
-
-            <br />
-            Customer Code <input name="CustomerCode"
-                                 type="text"                      
-                                 value="@Model.CustomerCode" />
+            <p>Customer Code</p> @Html.TextBoxFor(m => m.CustomerCode)
             <br />
             @Html.ValidationMessageFor(x => x.CustomerCode)
             <br />
             <input id="Submit1" type="submit" value="submit" />
-        </form>
-        <br />
-            @*@Html.ValidationSummary()*@
+            <br />
+        }
+
+        @*@Html.ValidationSummary()*@
     </div>
 </body>
+
 </html>
