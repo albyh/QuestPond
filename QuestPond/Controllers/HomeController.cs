@@ -8,22 +8,18 @@ namespace QuestPond.Controllers
 {
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
-            return View();
+            Session["MyTimeSession"] = DateTime.Now.ToString();
+            TempData["MyTimeTemp"] = DateTime.Now.ToString();
+            ViewBag.MyTime = DateTime.Now.ToString(); 
+            return RedirectToAction("GotoHome","Home"); 
         }
-
-        public ActionResult About()
+        public ActionResult GotoHome()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+           // ViewData["MyTime"] = DateTime.Now.ToString();
+            ViewBag.MyTime = DateTime.Now.ToString(); 
             return View();
         }
     }

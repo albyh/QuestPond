@@ -12,12 +12,24 @@ namespace QuestPond
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.config");
+            routes.MapRoute(
+               name: "Home",
+               url: "Home",
+               defaults: new { controller = "Home", action = "GotoHome", id = UrlParameter.Optional }
+           );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+              name: "Home1",
+              url: "Home/Home",
+              defaults: new { controller = "Home", action = "GotoHome", id = UrlParameter.Optional }
+          );
+           
+            routes.MapRoute(
+               name: "Default",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+           );
         }
     }
 }
